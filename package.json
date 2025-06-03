@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/hizkiajonathanbudiana/PairProject-Phase-1#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "pg": "^8.16.0",
