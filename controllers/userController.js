@@ -49,20 +49,30 @@ class UserController {
       const user = await User.findOne({ where: { username: username } });
 
       if(!user){
-        const msg = "Can't Find username";
+        const msg = "Can't find username";
         res.redirect(`/login?error=${msg}`);
       }
 
       if (user) {
         const isValidPassword = await bcrypt.compare(password, user.password);
         if (isValidPassword) {
+            req.session.userId = user.id
           res.render("profile");
         }
       } else {
         const msg = "Wrong Password";
         res.redirect(`/login?error=${msg}`);
       }
-      
+
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  }
+
+  static async profile(req, res) {
+    try {
+      res.render("profile");
     } catch (error) {
       console.log(error);
       res.send(error);

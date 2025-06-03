@@ -1,12 +1,25 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const router = require('./routers/router'); 
-const port = 3005
+const router = require("./routers/router");
+const session = require('express-session')
+
+
+const port = 3005;
 
 
 app.use(express.urlencoded({ extended: true }));
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
+
+
+app.use(
+  session({
+    secret: "rahasiaaa hehehe",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, sameSite: true },
+  })
+);
 
 app.use(router);
 
