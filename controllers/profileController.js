@@ -14,9 +14,12 @@ class ProfileController {
 
       console.log(req.session);
       // return res.send(userProfile)
+     
 
       if (!userProfile) {
         return res.redirect(`/profile/set`);
+      } else{
+        req.session.profile = 'pass'
       }
       console.log(userProfile);
       console.log(userProfile);
@@ -30,13 +33,13 @@ class ProfileController {
     }
   }
 
-  static async backButton(req, res) {
+  static async homeButton(req, res) {
     try {
-      if (req.session.role === "roleA") {
-        return res.redirect("/roleA");
+      if (req.session.userRole === "clientA") {
+        return res.redirect("/service");
       }
-      if (req.session.role === "roleB") {
-        return res.redirect("/roleB");
+      if (req.session.userRole === "clientB") {
+        return res.redirect("/slots");
       }
     } catch (error) {
       console.log(error);

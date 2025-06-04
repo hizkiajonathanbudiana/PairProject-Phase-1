@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            Welcome back !
+        </h1>
+        <div>
+            <a href="/service/addSlot" > Add New Slot Service</a>
+        </div>
+
+        <form action="/service" method="get">
+            <input type="text" name="search" placeholder="Search by Service Name..." >
+            <select name="category" id="category">
+                <option value="" selected = ''disabled>Choose By category ...</option>
+                <option value="booked">Booked</option>
+                <option value="notbooked">not booked</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+
+        <a href="/service">REFRESH</a>
+    </header> <br>
+    <div>
+         <table border="8">
+                <thead>
+                    <tr>
+                        <th>Service Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% services.forEach((el) => { %>
+                        <tr>
+                            <td><%= el.serviceName %></td>
+                            <td><%= el.startTime %></td>
+                            <td><%= el.endTime %></td>
+                            <td><%= el.location %></td>
+                            <td>
+                                <% if (el.isBooked) { %>
+                                    <span>Booked</span>
+                                <% } else { %>
+                                    <span>Available</span>
+                                <% } %>
+                            </td>
+                            <td>
+                                <% if (!el.isBooked) { %> <a href="/service/delete/<%= el.id %>">DELETE</a>
+                                <% } else { %>
+                                    <span>CANT DELETE, BOOKED BY YOUR CLIENT</span>
+                                <% } %>
+                                </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+    </div>
+</body>
+
+</html>

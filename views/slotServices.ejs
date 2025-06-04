@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    
+<body>
+    <header>
+        <h1>
+            BOOKED
+        </h1>
+        <div>
+            <a href="/slot">Add Slot</a>
+        </div>
+    </header> <br>
+    <div>
+        <table border="3">
+            <tr>
+                <th>Service Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Location</th>
+                <th>Action</th>
+
+            </tr>
+            <% bookings.forEach((el)=> { %>
+                <tr>
+                    <td>
+                        <%= el.Slot.serviceName %>
+                    </td>
+                    <td>
+                        <%= el.Slot.startTime %>
+                    </td>
+                    <td>
+                        <%= el.Slot.endTime %>
+                    </td>
+                    <td>
+                        <%= el.Slot.location %>
+                    </td>
+                    <td>CANT DELTE ALR BOOKED</td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+
+
+    <header>
+        <h1>
+            Sertix
+        </h1>
+        <div>
+            <a href="/slot">Add Slot</a>
+        </div>
+    </header> <br>
+    <div>
+        <table border="3">
+            <tr>
+                <th>Service Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Location</th>
+                <th>Action</th>
+
+            </tr>
+            <% slots.forEach((el)=> { %>
+                <tr>
+                    <td>
+                        <%= el.serviceName %>
+                    </td>
+                    <td>
+                        <%= el.startTime %>
+                    </td>
+                    <td>
+                        <%= el.endTime %>
+                    </td>
+                    <td>
+                        <%= el.location %>
+                    </td>
+                    <td><a href="/slots/book/<%= el.id %>">BOOK</a></td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+</body>
+
+</html>
