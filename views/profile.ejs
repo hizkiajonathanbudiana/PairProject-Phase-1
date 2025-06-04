@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Profile PPPPP</h1>
+    <a href="/profile/edit">EDIT</a><br><br>
+    <img src="<%= userProfile.photoUrl %>" alt="photoPic" />
+    <p><%= userProfile.displayName %></p>
+    <p><%= userProfile.displayName %></p>
+    <p><%= userProfile.phoneNumber %></p>
+    <p><%= userProfile.bio %></p>
+    <br /><br />
     <a href="/logout">LOGOUT</a>
-</body>
+  </body>
 </html>

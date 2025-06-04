@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Register</h1>
+
+    <% if (error) { %> <% error.split(',').forEach(el => { %>
+    <p style="color: red"><%= el %></p>
+    <% }) %> <% } %>
+
     <form action="/register" method="POST">
-        <div>
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username">
-        </div>
-        <br>
-        <div>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" >
-        </div>
-        <br>
-        <div>
-            <label for="password">Password (min. 8 karakter):</label><br>
-            <input type="password" id="password" name="password"  minlength="8">
-        </div>
-        <br>
-        <div>
-            <label for="role">Role : </label><br>
-            <select id="role" name="role" >
-                <option value="">Role</option>
-                <option value="clientA">Client A </option>
-                <option value="clientB">Client B </option>
-                </select>
-        </div>
-        <br>
-        <button type="submit">Register</button>
+      <div>
+        <label for="username">Username:</label><br />
+        <input type="text" id="username" name="username" />
+      </div>
+      <br />
+      <div>
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" />
+      </div>
+      <br />
+      <div>
+        <label for="password">Password (min. 8 karakter):</label><br />
+        <input type="text" id="password" name="password"  />
+      </div>
+      <br />
+      <div>
+        <label for="role">Role : </label><br />
+        <select id="role" name="role">
+          <option value="">Role</option>
+          <option value="clientA">Client A</option>
+          <option value="clientB">Client B</option>
+        </select>
+      </div>
+      <br />
+      <button type="submit">Register</button>
     </form>
-</body>
+  </body>
 </html>

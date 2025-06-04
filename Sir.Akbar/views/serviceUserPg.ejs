@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            Sertix
+        </h1>
+        <div>
+            <a href="/service/addSlot">Add Slot</a>
+        </div>
+    </header> <br>
+    <div>
+        <table border="3">
+            <tr>
+                <th>Service Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Location</th>
+            </tr>
+            <% dbSlotUser.forEach((el)=> { %>
+                <tr>
+                    <td>
+                        <%= el.serviceName %>
+                    </td>
+                    <td>
+                        <%= el.startTime %>
+                    </td>
+                    <td>
+                        <%= el.endTime %>
+                    </td>
+                    <td>
+                        <%= el.location %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+</body>
+
+</html>

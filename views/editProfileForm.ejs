@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/profile/edit" method="post">
+      <label for="photoUrl">photoUrl</label>
+      <input type="text" name="photoUrl" id="photoUrl" value = "<%= userProfile.photoUrl %>"/> <br /><br />
+
+      <label for="displayName">displayName</label>
+      <input type="text" name="displayName" id="displayName" value="<%= userProfile.displayName %>" /> <br /><br />
+
+      <label for="phoneNumber">phoneNumber</label>
+      <input type="number" name="phoneNumber" id="phoneNumber" value="<%= userProfile.phoneNumber %>" /> <br /><br />
+
+      <label for="bio">bio</label>
+      <input type="text" name="bio" id="bio" value="<%= userProfile.bio %>" /> <br /><br />
+
+      <input type="time">
+      <button submit="submit">SET PROFILE</button>
+    </form>
+  </body>
+</html>

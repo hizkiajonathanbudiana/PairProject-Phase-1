@@ -1,20 +1,29 @@
 const { User, UserProfile } = require("../models");
 
 class ProfileController {
-  static async checkProfile(req, res) {
+  static async userProfile(req, res) {
     try {
-      const userId = req.session.usedId;
+      const userId = req.session.userId;
+      // res.send(userId);
+
       const { notification } = req.query;
 
-      const checkProfile = await UserProfile.findOne({
+      const userProfile = await UserProfile.findOne({
         where: { UserId: userId },
       });
 
-      if (!checkProfile) {
-        res.redirect(`/profile/set/${userId}`);
-      }
+      console.log(req.session);
+      // return res.send(userProfile)
 
-      res.render("profile", { notification });
+      if (!userProfile) {
+        return res.redirect(`/profile/set`);
+      }
+      console.log(userProfile);
+      console.log(userProfile);
+      console.log(userProfile);
+      console.log(userProfile);
+
+      res.render("profile", { notification, userProfile });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -24,10 +33,10 @@ class ProfileController {
   static async backButton(req, res) {
     try {
       if (req.session.role === "roleA") {
-        res.redirect("/roleA");
+        return res.redirect("/roleA");
       }
       if (req.session.role === "roleB") {
-        res.redirect("/roleB");
+        return res.redirect("/roleB");
       }
     } catch (error) {
       console.log(error);
@@ -37,10 +46,9 @@ class ProfileController {
 
   static async setProfileForm(req, res) {
     try {
-      const { userId } = req.params;
       const { error } = req.query;
 
-      res.render(`setProfileForm`, { error, userId });
+      res.render("setProfileForm", { error });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -49,7 +57,8 @@ class ProfileController {
 
   static async handleSetProfile(req, res) {
     try {
-      const { userId } = req.params;
+      const userId = req.session.userId;
+
       const { displayName, bio, phoneNumber, photoUrl } = req.body;
 
       await UserProfile.create({
@@ -74,10 +83,13 @@ class ProfileController {
 
   static async editProfileForm(req, res) {
     try {
-      const { userId } = req.params;
+      const userId = req.session.userId;
       const { error } = req.query;
+      const userProfile = await UserProfile.findOne({
+        where: { UserId: userId },
+      });
 
-      res.render(`editProfileForm`, { error, userId });
+      res.render(`editProfileForm`, { error, userProfile });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -86,7 +98,7 @@ class ProfileController {
 
   static async updateProfileData(req, res) {
     try {
-      const { userId } = req.params;
+      const userId = req.session.userId;
       const { displayName, bio, phoneNumber, photoUrl } = req.body;
 
       await UserProfile.update(
