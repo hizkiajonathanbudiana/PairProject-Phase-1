@@ -10,11 +10,12 @@ const SlotsController = require("../controllers/slotsController.js");
 const { protector, roleA, roleB, profile } = require("../middlewares");
 
 const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000, 
-  limit: 10, 
+  windowMs: 10 * 1000, 
+  // 1  * 60 * 1000
+  limit: 5, 
   standardHeaders: "draft-8", 
   legacyHeaders: false, 
-  message: "Too many requests, please try again later after 1 minute",
+  message: "Too many requests, please try again later after 10 seconds",
 });
 
 // router.use(limiter);
@@ -22,8 +23,8 @@ const limiter = rateLimit({
 router.get("/", UserController.home);
 router.get("/register", UserController.register);
 router.post("/register", UserController.createUser);
-router.get("/login", UserController.login);
-router.post("/login", UserController.handleLogin);
+router.get("/login", limiter,  UserController.login);
+router.post("/login", limiter, UserController.handleLogin);
 router.get("/logout", UserController.logout);
 
 router.use(protector);

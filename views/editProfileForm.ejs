@@ -18,6 +18,17 @@
   </header>
   <div>
     <h1 style="text-align: center;"> Edit Profile </h1>
+    <div style="display: flex; justify-content: center;">
+    <% if (error) { %>
+      <% error.split(',').forEach(el=> { %>
+        <div>
+          <p style="color: red; padding: 0 20px 0 20px; border-inline: 1px solid red;">
+            <%= el %>
+          </p>
+        </div>
+        <% }) %>
+          <% } %>
+  </div>
     <div
       style="justify-self: center; width: 380px; min-height: 360px; background-color: rgb(19, 19, 78); border-radius: 12px;">
       <form action="/profile/edit" method="post" style="padding: 20px 40px;">
@@ -38,7 +49,6 @@
           style="justify-content: center; justify-self: left; width: 480px; padding: 50px 0 20px 0; color: white;">bio</label><br>
         <input type="text" name="bio" id="bio" value="<%= userProfile.bio %>" style="width: 300px;" /> <br /><br />
 
-        <input type="time"> <br>
         <div style="justify-self: center; padding-top: 20px;">
           <button submit="submit" style="justify-self: center;">SET PROFILE</button>
         </div>

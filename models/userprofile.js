@@ -16,10 +16,39 @@ module.exports = (sequelize, DataTypes) => {
   }
   UserProfile.init(
     {
-      displayName: DataTypes.STRING,
-      bio: DataTypes.TEXT,
-      phoneNumber: DataTypes.STRING,
-      photoUrl: DataTypes.STRING,
+      displayName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Please Input your displayName" },
+          notEmpty: { msg: "Please Input your displayName" },
+        },
+      },
+      bio: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Please Input your bio" },
+          notEmpty: { msg: "Please Input your bio" },
+        },
+      },
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notNull: { msg: "Please Input your phoneNumber" },
+          notEmpty: { msg: "Please Input your phoneNumber" },
+        },
+      },
+      photoUrl: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Please Input your photoUrl" },
+          notEmpty: { msg: "Please Input your photoUrl" },
+        },
+      },
       UserId: DataTypes.INTEGER,
     },
     {

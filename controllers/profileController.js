@@ -21,10 +21,10 @@ class ProfileController {
       } else{
         req.session.profile = 'pass'
       }
-      console.log(userProfile);
-      console.log(userProfile);
-      console.log(userProfile);
-      console.log(userProfile);
+      // console.log(userProfile);
+      // console.log(userProfile);
+      // console.log(userProfile);
+      // console.log(userProfile);
 
       res.render("profile", { notification, userProfile });
     } catch (error) {
@@ -61,7 +61,6 @@ class ProfileController {
   static async handleSetProfile(req, res) {
     try {
       const userId = req.session.userId;
-
       const { displayName, bio, phoneNumber, photoUrl } = req.body;
 
       await UserProfile.create({
@@ -74,7 +73,16 @@ class ProfileController {
       const msg = "You succesfully created profile";
       res.redirect(`/profile?notification=${msg}`);
     } catch (error) {
-      if (error.name === "SequelizeValidationError") {
+      if (error.name === "SequelizeUniqueConstraintError") {
+        const err = error.errors.map((el) => {
+          if (el.message === "phoneNumber must be unique") {
+            return "Phone Number has been taken";
+          }else {
+            return el.message;
+          }
+        });
+        res.redirect(`/profile/set?error=${err}`);
+      } else if (error.name === "SequelizeValidationError") {
         const err = error.errors.map((el) => el.message);
         res.redirect(`/profile/set?error=${err}`);
       } else {
@@ -112,7 +120,16 @@ class ProfileController {
       const msg = "You succesfully created profile";
       res.redirect(`/profile?notification=${msg}`);
     } catch (error) {
-      if (error.name === "SequelizeValidationError") {
+      if (error.name === "SequelizeUniqueConstraintError") {
+        const err = error.errors.map((el) => {
+          if (el.message === "phoneNumber must be unique") {
+            return "Phone Number has been taken";
+          }else {
+            return el.message;
+          }
+        });
+        res.redirect(`/profile/edit?error=${err}`);
+      } else if (error.name === "SequelizeValidationError") {
         const err = error.errors.map((el) => el.message);
         res.redirect(`/profile/edit?error=${err}`);
       } else {

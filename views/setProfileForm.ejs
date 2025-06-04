@@ -14,8 +14,21 @@
       <h1><a href="/" style="text-decoration: none; color: white;">Skillora</a></h1>
     </div>
   </header>
+  
   <div>
+    
     <h1 style="text-align: center;"> Set Profile </h1>
+    <div style="display: flex; justify-content: center;">
+    <% if (error) { %>
+      <% error.split(',').forEach(el=> { %>
+        <div>
+          <p style="color: red; padding: 0 20px 0 20px; border-inline: 1px solid red;">
+            <%= el %>
+          </p>
+        </div>
+        <% }) %>
+          <% } %>
+  </div>
     <div
       style="display: flex; justify-self: center; width: 420px; min-height: 420px; background-color: rgb(19, 19, 78); border-radius: 12px;">
       <form action="/profile/set" method="post" style="padding: 40px 40px 0 40px;">
@@ -39,6 +52,7 @@
       </form>
     </div>
   </div>
+  
 </body>
 
 </html>

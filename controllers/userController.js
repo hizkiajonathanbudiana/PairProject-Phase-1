@@ -85,7 +85,8 @@ class UserController {
 
         console.log(JSON.parse(JSON.stringify(req.session)));
 
-        return res.redirect("/profile");
+        const msg = 'Succesfully login'
+        return res.redirect(`profile?notification=${msg}`);
       } else {
         const msg = "Wrong Password";
         return res.redirect(`/login?error=${msg}`);
