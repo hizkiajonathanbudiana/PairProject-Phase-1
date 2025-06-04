@@ -3,7 +3,7 @@ const router = express.Router();
 const rateLimit = require('express-rate-limit')
 
 const UserController = require("../controllers/userController.js");
-
+const ProfileController = require('../controllers/profileController.js')
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -23,7 +23,7 @@ router.get('/logout', UserController.logout)
 
 router.use(function (req, res, next) {
   if (!req.session.userId) {
-    console.log(req.session.user);
+    console.log(req.session.userId);
     
     const error = "PLease login first!";
     res.redirect(`/login?error=${error}`);
@@ -32,6 +32,46 @@ router.use(function (req, res, next) {
   }
 });
 
-router.get("/profile", UserController.profile);
+// const roleA = function (req, res, next) {
+//   if (!req.session.userId === 'roleB') {
+//     console.log(req.session.userId);
+    
+//     const error = "Can't view this page!";
+//     res.redirect(`/login?error=${error}`);
+//   } else {
+//     next();
+//   }
+// }
+
+
+// const roleB = function (req, res, next) {
+//   if (!req.session.userId === 'roleA') {
+//     console.log(req.session.userId);
+    
+//     const error = "Can't view this page!";
+//     res.redirect(`/login?error=${error}`);
+//   } else {
+//     next();
+//   }
+// }
+
+
+// const profile = function (req, res, next) {
+//   if (!req.session.profile) {
+//     console.log(req.session.userId);
+    
+//     const error = "Please set profile first";
+//     res.redirect(`/login?error=${error}`);
+//   } else {
+//     next();
+//   }
+// }
+
+
+
+
+
+
+router.get("/profile", ProfileController.checkProfile);
 
 module.exports = router;

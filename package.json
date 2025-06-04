@@ -24,6 +24,7 @@
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
+    "pairproject-phase-1": "file:",
     "pg": "^8.16.0",
     "sequelize": "^6.37.7",
     "sequelize-cli": "^6.6.3"

@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User , UserProfile } = require("../models");
 const bcrypt = require("bcryptjs");
 
 class UserController {
@@ -58,26 +58,19 @@ class UserController {
         if (isValidPassword) {
           req.session.userId = user.id;
           req.session.userRole = user.role;
-          res.render("profile");
+          res.redirect("/profile");
         }
       } else {
         const msg = "Wrong Password";
         res.redirect(`/login?error=${msg}`);
       }
+      
     } catch (error) {
       console.log(error);
       res.send(error);
     }
   }
 
-  static async profile(req, res) {
-    try {
-      res.render("profile");
-    } catch (error) {
-      console.log(error);
-      res.send(error);
-    }
-  }
 
   static async logout(req, res) {
     try {

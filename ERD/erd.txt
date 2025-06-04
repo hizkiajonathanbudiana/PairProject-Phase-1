@@ -1,0 +1,33 @@
+Table users {
+  id serial [pk]
+  username int [ unique]
+  email varchar [unique]
+  password varchar
+  role varchar  // 'clientA' or 'clientB'
+}
+
+Table user_profiles {
+  id serial [pk]
+  displayName  varchar // 1:1 
+  bio text
+  phone varchar
+  photo_url varchar
+  UserId int [ref: - users.id]
+}
+
+Table slots {
+  id serial [pk]
+  service_name varchar 
+  start_time timestamp
+  end_time timestamp
+  location text
+  created_by int [ref: > users.id]  // role 'clientA'
+
+}
+
+Table bookings {
+  id serial [pk]
+  booked_time timestamp
+  slot_id int [ref: > slots.id]
+  booked_by int [ref: > users.id]  // role 'clientB'
+}
