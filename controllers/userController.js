@@ -28,7 +28,7 @@ class UserController {
 
       await User.create({ username, email, password, role });
 
-      res.redirect("/register");
+      res.redirect("/login");
     } catch (error) {
       if (error.name === "SequelizeUniqueConstraintError") {
         const err = error.errors.map((el) => {

@@ -1,0 +1,37 @@
+[
+    {
+        "displayName": "Angga P",
+        "bio": "Laki-laki",
+        "phoneNumber": "086325723232",
+        "photoUrl": "https://loremflickr.com/cache/resized/defaultImage.small_600_400_nofilter.jpg",
+        "UserId": 1
+    },
+    {
+        "displayName": "Budi L",
+        "bio": "Laki-laki",
+        "phoneNumber": "0828348834743",
+        "photoUrl": "https://fastly.picsum.photos/id/312/600/400.jpg?hmac=xPDu5IloCfgRuMW78l3hXDFED20V0v6Ss8bvh00tdFE",
+        "UserId": 2
+    },
+    {
+        "displayName": "Cahya P",
+        "bio": "Perempuan",
+        "phoneNumber": "08527382368232",
+        "photoUrl": "https://i.pinimg.com/736x/be/b5/da/beb5da45ee2b47a1cb0df2cc966979df.jpg",
+        "UserId": 3
+    },
+    {
+        "displayName": "Denna C",
+        "bio": "Perempuan",
+        "phoneNumber": "08523876832482",
+        "photoUrl": "https://i.pinimg.com/736x/fa/c8/9a/fac89a0298ec9bce3afa2aebd6883c45.jpg",
+        "UserId": 4
+    },
+    {
+        "displayName": "Edwin Wu",
+        "bio": "Laki-laki",
+        "phoneNumber": "08162382482933",
+        "photoUrl": "https://i.pinimg.com/736x/fa/c8/9a/fac89a0298ec9bce3afa2aebd6883c45.jpg",
+        "UserId": 5
+    }
+]

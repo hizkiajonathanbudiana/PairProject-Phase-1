@@ -1,0 +1,10 @@
+[
+    {
+        "slotId": 2,
+        "bookedBy": 3
+    },
+    {
+        "slotId": 4,
+        "bookedBy": 5
+    }
+]

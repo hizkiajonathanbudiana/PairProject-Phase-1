@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Profile PPPPP</h1>
-    <a href="/home">Home</a><br /><br />
-    <a href="/profile/edit">EDIT</a><br /><br />
-    <img src="<%= userProfile.photoUrl %>" alt="photoPic" />
-    <p><%= userProfile.displayName %></p>
-    <p><%= userProfile.displayName %></p>
-    <p><%= userProfile.phoneNumber %></p>
-    <p><%= userProfile.bio %></p>
-    <br /><br />
-    <a href="/logout">LOGOUT</a>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body style="margin: 0;">
+  <header
+    style="height: 90px; background-color: rgb(10, 10, 96); padding: 20px; display: flex; justify-content: space-between;">
+    <div>
+      <h1><a href="/home" style="text-decoration: none; color: white;">Skillora</a></h1>
+    </div>
+    <div style="padding-top: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      <a href="/logout"
+        style="text-decoration: none; color: white; padding: 0 30px 0 30px; width: 120px; text-align: center;">LOGOUT</a>
+    </div>
+  </header>
+  <div style="padding-top: 20px; color: white;">
+    <div>
+      <h1 style="text-align: center; color: rgb(0, 0, 0);">Profile User</h1>
+    </div> <br>
+    <div
+      style="justify-self: center; width: 380px; min-height: 360px; background-color: rgb(19, 19, 78); border-radius: 12px;">
+      <div>
+        <div style=" display: flex; justify-self: center ;">
+          <img src="<%= userProfile.photoUrl %>" alt="Profile Picture" width="380px" height="240px"
+            style="border-radius: 16px; object-fit: cover;" />
+        </div>
+        <div style="padding: 0 40px;">
+          <h4>Name: <%= userProfile.displayName %>
+          </h4>
+          <h4>
+            Phone Number: <%= userProfile.phoneNumber %>
+          </h4>
+          <h4>
+            Bio: <%= userProfile.bio %>
+          </h4>
+        </div>
+        <div style="text-decoration: none; color: white; text-align: center; padding-bottom: 10px;">
+          <a href="/profile/edit" style="text-decoration: none; color: white; font-weight: 800;">EDIT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

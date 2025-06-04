@@ -18,6 +18,15 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "slotId",
       });
     }
+
+    get formatStartTime (){
+      return  new Date(this.startTime).toLocaleString();
+
+    }
+
+    get formatEndTime (){
+      return new Date(this.endTime).toLocaleString()
+    }
   }
   Slot.init(
     {

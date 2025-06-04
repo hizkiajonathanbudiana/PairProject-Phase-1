@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Register</h1>
 
-    <% if (error) { %> <% error.split(',').forEach(el => { %>
-    <p style="color: red"><%= el %></p>
-    <% }) %> <% } %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-    <form action="/register" method="POST">
-      <div>
-        <label for="username">Username:</label><br />
-        <input type="text" id="username" name="username" />
+<body style="margin: 0;">
+  <header
+    style="height: 90px; background-color: rgb(10, 10, 96); padding: 20px; display: flex; justify-content: space-between;">
+    <div>
+      <h1><a href="/" style="text-decoration: none; color: white;">Skillora</a></h1>
+    </div>
+  </header>
+  <div style="display: flex; justify-content: center;">
+    <% if (error) { %>
+      <% error.split(',').forEach(el=> { %>
+        <div>
+          <p style="color: red; padding: 0 20px 0 20px; border-inline: 1px solid red;">
+            <%= el %>
+          </p>
+        </div>
+        <% }) %>
+          <% } %>
+  </div>
+  <div style="display: flex;justify-content: center; padding-top: 30px; color: white;">
+    <div style="width: 420px; min-height: 420px; background-color: rgb(19, 19, 78); border-radius: 12px;">
+      <h1 style="text-align: center;">Register</h1>
+      <div style="padding: 0 40px 0 40px;">
+        <form action="/register" method="POST">
+          <div>
+            <label for="username">Username:</label><br />
+            <input type="text" id="username" name="username" style="width:100%; height: 20px;" />
+          </div>
+          <br />
+          <div>
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" style="width:100%; height: 20px;" />
+          </div>
+          <br />
+          <div>
+            <label for="password">Password (min. 8 karakter):</label><br />
+            <input type="text" id="password" name="password" style="width:100%; height: 20px;" />
+          </div>
+          <br />
+          <div>
+            <label for="role">Role : </label><br />
+            <select id="role" name="role" style="width:102%; height: 24px;">
+              <option value="" disabled selected>Role</option>
+              <option value="clientA">Client A</option>
+              <option value="clientB">Client B</option>
+            </select>
+          </div> <br />
+          <div style="display: flex; justify-content: center; padding-top: 30px;">
+            <button type="submit" style="width: 86px; height: 30px; font-weight: 600;">Register</button>
+          </div>
+        </form>
       </div>
-      <br />
-      <div>
-        <label for="email">Email:</label><br />
-        <input type="email" id="email" name="email" />
-      </div>
-      <br />
-      <div>
-        <label for="password">Password (min. 8 karakter):</label><br />
-        <input type="text" id="password" name="password"  />
-      </div>
-      <br />
-      <div>
-        <label for="role">Role : </label><br />
-        <select id="role" name="role">
-          <option value="">Role</option>
-          <option value="clientA">Client A</option>
-          <option value="clientB">Client B</option>
-        </select>
-      </div>
-      <br />
-      <button type="submit">Register</button>
-    </form>
-  </body>
+    </div>
+  </div>
+</body>
+
 </html>
