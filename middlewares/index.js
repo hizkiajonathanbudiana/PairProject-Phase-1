@@ -1,5 +1,3 @@
-const rateLimit = require('express-rate-limit')
-
 
 const protector = (function (req, res, next) {
   if (!req.session.userId) {
@@ -15,11 +13,11 @@ const protector = (function (req, res, next) {
 
 
 const roleA = function (req, res, next) {
-  if (!req.session.userId === 'roleB') {
+  if (req.session.userRole !== 'clientA') {
     console.log(req.session.userId);
     
     const error = "Can't view this page!";
-    res.redirect(`/login?error=${error}`);
+    res.redirect(`/profile?error=${error}`);
   } else {
     next();
   }
@@ -27,11 +25,11 @@ const roleA = function (req, res, next) {
 
 
 const roleB = function (req, res, next) {
-  if (!req.session.userId === 'roleA') {
+  if (req.session.userRole !== 'clientB') {
     console.log(req.session.userId);
     
     const error = "Can't view this page!";
-    res.redirect(`/login?error=${error}`);
+    res.redirect(`/profile?error=${error}`);
   } else {
     next();
   }
@@ -39,12 +37,12 @@ const roleB = function (req, res, next) {
 
 
 const profile = function (req, res, next) {
-  if (!req.session.profile) {
-    console.log(req.session.userId);
+  if (req.session.profile !== 'pass') {
     
     const error = "Please set profile first";
-    res.redirect(`/login?error=${error}`);
+    res.redirect(`/profile/set?error=${error}`);
   } else {
+    console.log(req.session.profile);
     next();
   }
 }
