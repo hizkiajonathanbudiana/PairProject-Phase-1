@@ -1,77 +1,35 @@
 const express = require("express");
 const router = express.Router();
-const rateLimit = require('express-rate-limit')
+const rateLimit = require("express-rate-limit");
 
 const UserController = require("../controllers/userController.js");
-const ProfileController = require('../controllers/profileController.js')
+const ProfileController = require("../controllers/profileController.js");
+
+const { protector, roleA, roleB, profile } = require("../middlewares");
 
 const limiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	limit: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-	standardHeaders: 'draft-8', // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-	// store: ... , // Redis, Memcached, etc. See below.
-})
-
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+  standardHeaders: "draft-8", // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+  // store: ... , // Redis, Memcached, etc. See below.
+});
 
 router.get("/", UserController.home);
 router.get("/register", UserController.register);
 router.post("/register", limiter, UserController.createUser);
 router.get("/login", UserController.login);
-router.post("/login", UserController.handleLogin);
-router.get('/logout', UserController.logout)
+router.post("/login", limiter, UserController.handleLogin);
+router.get("/logout", UserController.logout);
 
-router.use(function (req, res, next) {
-  if (!req.session.userId) {
-    console.log(req.session.userId);
-    
-    const error = "PLease login first!";
-    res.redirect(`/login?error=${error}`);
-  } else {
-    next();
-  }
-});
+router.use(protector);
 
-// const roleA = function (req, res, next) {
-//   if (!req.session.userId === 'roleB') {
-//     console.log(req.session.userId);
-    
-//     const error = "Can't view this page!";
-//     res.redirect(`/login?error=${error}`);
-//   } else {
-//     next();
-//   }
-// }
+router.get("/profile", ProfileController.userProfile);
+router.get("/profile/set", ProfileController.setProfileForm);
+router.post("/profile/set", ProfileController.handleSetProfile);
+router.get("/profile/edit", ProfileController.editProfileForm);
+router.post("/profile/edit", ProfileController.updateProfileData);
 
 
-// const roleB = function (req, res, next) {
-//   if (!req.session.userId === 'roleA') {
-//     console.log(req.session.userId);
-    
-//     const error = "Can't view this page!";
-//     res.redirect(`/login?error=${error}`);
-//   } else {
-//     next();
-//   }
-// }
-
-
-// const profile = function (req, res, next) {
-//   if (!req.session.profile) {
-//     console.log(req.session.userId);
-    
-//     const error = "Please set profile first";
-//     res.redirect(`/login?error=${error}`);
-//   } else {
-//     next();
-//   }
-// }
-
-
-
-
-
-
-router.get("/profile", ProfileController.checkProfile);
 
 module.exports = router;

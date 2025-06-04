@@ -12,16 +12,54 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.UserProfile, {
-        foreignKey: "AuthorId",
+        foreignKey: "UserId",
       });
     }
   }
   User.init(
     {
-      username: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      role: DataTypes.STRING,
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notNull: { msg: "Please Input username" },
+          notEmpty: { msg: "Please Input username" },
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Please Input your email" },
+          notEmpty: { msg: "Please Input your email" },
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Please Input your password" },
+          notEmpty: { msg: "Please Input your password" },
+          len: {
+            args: [6],
+            msg: "Password must be at least 6 characters long",
+          },
+          checkSpace(value) {
+            if (/\s/.test(value)) {
+              throw new Error("Password must not contain spaces");
+            }
+          },
+        },
+      },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Please select Role" },
+          notEmpty: { msg: "Please select Role" },
+        },
+      },
     },
     {
       sequelize,
