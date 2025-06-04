@@ -1,0 +1,32 @@
+[
+    {
+        "username": "Angga",
+        "email": "angga@gmail.com",
+        "password": "Qwerty123*",
+        "role": "Client A"
+    },
+    {
+        "username": "Budi",
+        "email": "budi@gmail.com",
+        "password": "Qwerty123*",
+        "role": "Client A"
+    },
+    {
+        "username": "Cahya",
+        "email": "cahya@gmail.com",
+        "password": "Qwerty123*",
+        "role": "Client B"
+    },
+    {
+        "username": "Denna",
+        "email": "denna@gmail.com",
+        "password": "Qwerty123*",
+        "role": "Client A"
+    },
+    {
+        "username": "Edwin",
+        "email": "edwin@gmail.com",
+        "password": "Qwerty123*",
+        "role": "Client B"
+    }
+]

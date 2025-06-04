@@ -1,15 +1,18 @@
-const { User, UserProfile, Slot } = require("../models");
+const { User, UserProfile, Slot, Booking } = require("../models");
 const { formatDateTime } = require("../helpers/helper");
-const {Op} = require('sequelize')
+const { Op } = require('sequelize')
 
 class ServiceController {
-  static async showServiceUser(req, res) {
+   static async showServiceUser(req, res) {
     try {
       const userId = req.session.userId;
       const { category, search, notification} = req.query;
 
       let options = {
         where: { CreatedBy: userId },
+        include:[{
+          model:Booking
+        }],
         order: [["startTime", "DESC"]],
       };
 
@@ -29,6 +32,8 @@ class ServiceController {
       res.send(error);
     }
   }
+
+  
   static async addSlotService(req, res) {
     try {
       res.render("addSlotService");

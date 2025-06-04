@@ -1,0 +1,66 @@
+[
+  {
+    "serviceName": "Guru Mandarin",
+    "startTime": "2025-06-07 05:56:41.944 +0700",
+    "endTime": "2025-06-08 05:56:41.944 +0700",
+    "location": "Jl. Sunter Raya Blok B no 34",
+    "CreatedBy": "1",
+    "isBooked": false
+  },
+  {
+    "serviceName": "Teknisi AC",
+    "startTime": "2025-06-10 09:00:00.000 +0700",
+    "endTime": "2025-06-10 12:00:00.000 +0700",
+    "location": "Jl. Kemang Timur No. 15",
+    "CreatedBy": "2",
+    "isBooked": true
+  },
+  {
+    "serviceName": "Tukang Listrik",
+    "startTime": "2025-06-12 13:30:00.000 +0700",
+    "endTime": "2025-06-12 15:30:00.000 +0700",
+    "location": "Jl. Cempaka Putih No. 8",
+    "CreatedBy": "2",
+    "isBooked": false
+  },
+  {
+    "serviceName": "Jasa Bersih Rumah",
+    "startTime": "2025-06-14 08:00:00.000 +0700",
+    "endTime": "2025-06-14 11:00:00.000 +0700",
+    "location": "Jl. Melati Indah No. 2",
+    "CreatedBy": "4",
+    "isBooked": true
+  },
+  {
+    "serviceName": "Guru Les Matematika",
+    "startTime": "2025-06-15 17:00:00.000 +0700",
+    "endTime": "2025-06-15 19:00:00.000 +0700",
+    "location": "Jl. Pegangsaan No. 20",
+    "CreatedBy": "1",
+    "isBooked": false
+  },
+  {
+    "serviceName": "Montir Motor Panggilan",
+    "startTime": "2025-06-16 10:00:00.000 +0700",
+    "endTime": "2025-06-16 12:30:00.000 +0700",
+    "location": "Jl. Tebet Raya No. 11",
+    "CreatedBy": "2",
+    "isBooked": false
+  },
+  {
+    "serviceName": "Jasa Fotografer",
+    "startTime": "2025-06-18 14:00:00.000 +0700",
+    "endTime": "2025-06-18 18:00:00.000 +0700",
+    "location": "Jl. Bintaro Jaya No. 5",
+    "CreatedBy": "5",
+    "isBooked": false
+  },
+  {
+    "serviceName": "Guru Bahasa Inggris",
+    "startTime": "2025-06-20 16:00:00.000 +0700",
+    "endTime": "2025-06-20 18:00:00.000 +0700",
+    "location": "Jl. Wijaya Kusuma No. 9",
+    "CreatedBy": "1",
+    "isBooked": false
+  }
+]

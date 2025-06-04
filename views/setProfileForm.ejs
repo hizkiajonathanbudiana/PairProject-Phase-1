@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form action="/profile/set" method="post">
-      <label for="photoUrl">photoUrl</label>
-      <input type="text" name="photoUrl" id="photoUrl" /> <br /><br />
 
-      <label for="displayName">displayName</label>
-      <input type="text" name="displayName" id="displayName" /> <br /><br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-      <label for="phoneNumber">phoneNumber</label>
-      <input type="number" name="phoneNumber" id="phoneNumber" /> <br /><br />
+<body style="margin: 0;">
+  <header
+    style="height: 90px; background-color: rgb(10, 10, 96); padding: 20px; display: flex; justify-content: space-between;">
+    <div>
+      <h1><a href="/" style="text-decoration: none; color: white;">Skillora</a></h1>
+    </div>
+  </header>
+  <div>
+    <h1 style="text-align: center;"> Set Profile </h1>
+    <div
+      style="display: flex; justify-self: center; width: 420px; min-height: 420px; background-color: rgb(19, 19, 78); border-radius: 12px;">
+      <form action="/profile/set" method="post" style="padding: 40px 40px 0 40px;">
+        <label for="photoUrl"
+          style="justify-content: center; justify-self: left; width: 480px; padding: 50px 0 20px 0; color: white;">photoUrl</label><br>
+        <input type="text" name="photoUrl" id="photoUrl" style="width: 300px;" /> <br /><br />
 
-      <label for="bio">bio</label>
-      <input type="text" name="bio" id="bio" /> <br /><br />
+        <label for="displayName"
+          style="justify-content: center; justify-self: left; width: 480px; padding: 50px 0 20px 0; color: white;">displayName</label><br>
+        <input type="text" name="displayName" id="displayName" style="width: 300px;" /> <br /><br />
 
-      <button submit="submit">SET PROFILE</button>
-    </form>
-  </body>
+        <label for="phoneNumber"
+          style="justify-content: center; justify-self: left; width: 480px; padding: 50px 0 20px 0; color: white;">phoneNumber</label><br>
+        <input type="number" name="phoneNumber" id="phoneNumber" style="width: 300px;" /> <br /><br />
+
+        <label for="bio"
+          style="justify-content: center; justify-self: left; width: 480px; padding: 50px 0 20px 0; color: white;">bio</label><br>
+        <input type="text" name="bio" id="bio" style="width: 300px;" /> <br /><br />
+
+        <button submit="submit">SET PROFILE</button>
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>
