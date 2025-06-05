@@ -19,9 +19,22 @@
     </div>
   </header>
   <%= %>
-  <div>
+  <% if (notification) { %>
+   <div>
       <h1 style="text-align: center; color:green;"><%= notification.split(',')  %></h1>
     </div>
+  <% } %>
+  <div style="display: flex; justify-content: center;">
+    <% if (error) { %>
+      <% error.split(',').forEach(el=> { %>
+        <div>
+          <p style="color: red; padding: 0 20px 0 20px; border-inline: 1px solid red;">
+            <%= el %>
+          </p>
+        </div>
+        <% }) %>
+          <% } %>
+  </div>
   <div style="padding-top: 20px; color: white;">
     <div>
       <h1 style="text-align: center; color: rgb(0, 0, 0);">Profile User</h1>

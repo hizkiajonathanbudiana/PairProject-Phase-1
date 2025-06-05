@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
 
+   
+
+    
     get formatStartTime (){
       return  new Date(this.startTime).toLocaleString();
 

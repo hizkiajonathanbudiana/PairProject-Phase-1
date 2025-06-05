@@ -26,6 +26,7 @@ class ServiceController {
       }
 
       const services = await Slot.findAll(options);
+      
       res.render("homeClientA", { services, notification, });
     } catch (error) {
       console.log(error);

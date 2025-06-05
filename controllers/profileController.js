@@ -6,7 +6,7 @@ class ProfileController {
       const userId = req.session.userId;
       // res.send(userId);
 
-      const { notification } = req.query;
+      const { notification, error } = req.query;
 
       const userProfile = await UserProfile.findOne({
         where: { UserId: userId },
@@ -17,7 +17,8 @@ class ProfileController {
      
 
       if (!userProfile) {
-        return res.redirect(`/profile/set`);
+        const msg = `Please setup profile first`
+        return res.redirect(`/profile/set?notification=${msg}`);
       } else{
         req.session.profile = 'pass'
       }
@@ -26,7 +27,7 @@ class ProfileController {
       // console.log(userProfile);
       // console.log(userProfile);
 
-      res.render("profile", { notification, userProfile });
+      res.render("profile", { notification, userProfile , error});
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -49,9 +50,9 @@ class ProfileController {
 
   static async setProfileForm(req, res) {
     try {
-      const { error } = req.query;
+      const { error , notification} = req.query;
 
-      res.render("setProfileForm", { error });
+      res.render("setProfileForm", { error, notification });
     } catch (error) {
       console.log(error);
       res.send(error);

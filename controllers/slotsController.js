@@ -7,14 +7,7 @@ class SlotsController {
       const userId = req.session.userId;
 
       const slots = await Slot.findAll();
-      const bookings = await Booking.findAll({
-        where: { bookedBy: userId },
-        include: [
-          {
-            model: Slot,
-          },
-        ],
-      });
+      const bookings = await Booking.slots(userId)
       // res.send(bookings)
       res.render("slotServices", { slots, bookings });
     } catch (error) {
@@ -28,7 +21,7 @@ class SlotsController {
       const userId = req.session.userId;
 
 
-      const slot = await Slot.findOne({ where: { id: idSlot } });
+      // const slot = await Slot.findOne({ where: { id: idSlot } });
       // res.send(slot.CreatedBy);
       await Slot.update({ isBooked: true }, { where: { id: idSlot } });
       await Booking.create({ slotId: idSlot, bookedBy: userId });

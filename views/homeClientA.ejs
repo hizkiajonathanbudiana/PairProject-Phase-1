@@ -82,8 +82,8 @@
                                         style="text-decoration: none; color: #000000;">DELETE</a>
                                 </button>
                                 <% } else { %>
-                                    <P>CANT DELETE, BOOKED BY YOUR CLIENT (USER ID : <% el.Bookings.forEach(element=> {
-                                            %>
+                                    <P>CANT DELETE, BOOKED BY YOUR CLIENT (USER ID : <% el.Bookings.forEach(element=> {%>
+                                            
                                             <%= element.bookedBy %>,
                                                 <% }) %>)</P>
                                     <% } %>

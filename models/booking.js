@@ -9,12 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Booking.models = models;
       Booking.belongsTo(models.Slot, {
         foreignKey: "slotId",
       });
 
       Booking.belongsTo(models.User, {
         foreignKey: "bookedBy",
+      });
+    }
+
+    static async slots(userId) {
+      return await Booking.findAll({
+        where: { bookedBy: userId },
+        include: [
+          {
+            model: Booking.models.Slot,
+          },
+        ],
       });
     }
   }
